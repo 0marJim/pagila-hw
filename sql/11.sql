@@ -3,9 +3,9 @@
  * Use tables inventory and film.
  * Order by film title in reverse alphabetical order.
  */
-SELECT title, count(inventory_id)
+SELECT film.film_id, film.title, count(inventory.inventory_id) AS count
 FROM film
 JOIN inventory ON film.film_id = inventory.film_id
-WHERE title ILIKE 'h%'
-GROUP BY film.film_id, title
-ORDER BY title DESC;
+WHERE film.title ILIKE 'h%'
+GROUP BY film.film_id, film.title
+ORDER BY film.title DESC;

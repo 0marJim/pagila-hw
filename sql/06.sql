@@ -3,3 +3,6 @@
  * HINT:
  * Use the count() aggregation function and group by the actor's last name.
  */
+SELECT last_name, count(*)
+FROM actor
+GROUP BY last_name;

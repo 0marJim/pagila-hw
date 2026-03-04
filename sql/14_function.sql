@@ -6,6 +6,18 @@
 CREATE OR REPLACE FUNCTION list_category(TEXT) RETURNS TABLE(title TEXT) AS
 $$
 -- FIXME: implementation goes here
+CREATE OR REPLACE FUNCTION list_category(TEXT) RETURNS TABLE(title TEXT) AS
+$$
+    SELECT title
+    FROM film
+    JOIN film_category ON film.film_id = film_category.film_id
+    JOIN category ON film_category.category_id = category.category_id
+    WHERE category.name = $1;
+$$
+LANGUAGE SQL
+IMMUTABLE
+RETURNS NULL ON NULL INPUT;
+
 $$
 LANGUAGE SQL
 IMMUTABLE
